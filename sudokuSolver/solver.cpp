@@ -36,7 +36,7 @@ void Solver::enterPuzzle() {
     std::string puzzleString;
     int number = 0;
 
-    std::cout << "\nEnter Puzzle form left to right starting on stop row no spaces (blank=0)\n";
+    std::cout << "\nEnter Puzzle form left to right starting on top row, no spaces (blank=0)\n";
     std::cin >> puzzleString;
 
     for (int row = 0; row < 9; row++) {
@@ -63,24 +63,18 @@ bool Solver::inColumn(int col, int number) {
 }
 
 bool Solver::inSquare(int startRow, int startColumn, int num) {
+    int grid = (startRow / 3) * 3 + (startColumn / 3);
+    int gridStartRow = gridStart[grid][0];
+    int gridStartColumn = gridStart[grid][1];
+    
     for (int row = 0; row < 3; row++) {
         for (int column=0; column < 3; column++) {
-            if (puzzle[row + startRow][column + startColumn] == num) {
+            if (puzzle[gridStartRow+row][gridStartColumn + column] == num) {
                 return true;
             }
         }
     }
     return false;
-}
-
-bool Solver::validInput() {
-    for (int i = 0; i < 9; i++) {
-        if (inRow(i, 1)&&inColumn(i,1)) {
-            std::cout << "\nFound\n";
-            std::cout << i << '\n';
-        }
-    }
-    return true;
 }
 
 bool Solver::generateSolution() {
@@ -106,7 +100,7 @@ bool Solver::generateSolution() {
     }
      
     for (int num = 1; num <= 9; num++) {
-        if (!inRow(row, num) && !inColumn(column, num) && !inSquare(row-row%3,column-column%3,num)) {
+        if (!inRow(row, num) && !inColumn(column, num) && !inSquare(row,column,num)) {
             puzzle[row][column]=num;
 
             if (generateSolution())

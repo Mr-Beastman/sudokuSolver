@@ -8,10 +8,10 @@
 class Solver {
     int puzzle[9][9];
     std::string puzzleFile = "puzzles.txt";
-    int grids[9][2] = { 
-        {1,1}, {1,4}, {1,7},
-        {4,1}, {4,4}, {4,7},
-        {7,1}, {7,4}, {7,7}
+    int gridStart[9][2] = { 
+        {0,0}, {0,3}, {0,6},
+        {3,0}, {3,3}, {3,6},
+        {6,0}, {6,3}, {6,6}
     };
 
 public:
@@ -25,10 +25,14 @@ public:
     //manual entering of a puzzle as string
     void enterPuzzle();
 
+    //check if number exists in row
     bool inRow(int row,int number);
+
+    //check if number exists in column
     bool inColumn(int col, int number);
+
+    //check if number exists in square (3x3)
     bool inSquare(int startRow, int startColumn, int num);
-    bool validInput();
 
 
     bool generateSolution();
