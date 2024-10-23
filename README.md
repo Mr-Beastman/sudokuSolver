@@ -13,6 +13,7 @@ This is a simple Qt application developed in C++ to try the Qt framework. It ser
 
 ![image](https://github.com/user-attachments/assets/e92807b0-952c-47c6-b4ec-9eccb270cd85)\
 
-## Technologies Used
+### Technologies Used
 - **C++**
 - **Qt** Version 6.7.3
+### Comments feedback and suggestions welcome!
