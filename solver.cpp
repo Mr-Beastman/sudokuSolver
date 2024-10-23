@@ -12,10 +12,10 @@ void solver::readPuzzle(QWidget *parentWidget)
     for(int row = 0;row<9;row++){
         for(int col=0;col<9;col++){
 
-            //calculate input field number
+            //get input number for name of lineEdit
             int inputNumber = row * 9 + col + 1;
 
-            //get input from lineEdit and conver to string
+            //get input from lineEdit and convert to string
             QString objectName=QString("puzzle_%1").arg(inputNumber);
             QLineEdit *userInput = parentWidget->findChild<QLineEdit *>(objectName);
 
